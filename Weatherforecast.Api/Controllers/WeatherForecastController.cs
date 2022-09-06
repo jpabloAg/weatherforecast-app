@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Weatherforecast.Domain.Ports;
 
 namespace Weatherforecast.Api.Controllers
 {
@@ -12,10 +13,12 @@ namespace Weatherforecast.Api.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ICalculator _calculator;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ICalculator calculator)
         {
             _logger = logger;
+            _calculator = calculator;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -30,10 +33,11 @@ namespace Weatherforecast.Api.Controllers
             .ToArray();
         }
 
-        [HttpGet("{msg}")]
-        public ActionResult GetMessage(string msg)
+        [HttpGet("add/{number1}/{number2}")]
+        public ActionResult add(int number1, int number2)
         {
-            return Ok(new { message = msg, despliegue = "ecs" });
+            var result = _calculator.add(number1, number2);
+            return Ok(result);
         }
     }
 }
