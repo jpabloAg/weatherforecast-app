@@ -29,5 +29,11 @@ namespace Weatherforecast.Api.Controllers
             })
             .ToArray();
         }
+
+        [HttpGet("{msg}")]
+        public ActionResult GetMessage(string msg)
+        {
+            return Ok(new { message = msg, despliegue = "ecs" });
+        }
     }
 }
