@@ -21,5 +21,17 @@ namespace Weatherforecast.Tests
 
             Assert.Equal(10, result);
         }
+
+        [Theory]
+        [InlineData(10, 7, 3)]
+        [InlineData(35, 20, 15)]
+        public void Calculator_subtract_test(int number1, int number2, int expected)
+        {
+            Calculator calculator = new Calculator();
+
+            int result = calculator.subtract(number1, number2);
+
+            Assert.Equal(expected, result);
+        }
     }
 }

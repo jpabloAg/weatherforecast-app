@@ -9,5 +9,6 @@ namespace Weatherforecast.Domain.Ports
     public interface ICalculator
     {
         int add(int number1, int number2);
+        int subtract(int number1, int number2);
     }
 }
