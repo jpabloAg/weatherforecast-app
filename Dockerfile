@@ -8,4 +8,5 @@ RUN dotnet publish "./Weatherforecast.Api/Weatherforecast.Api.csproj" -c release
 FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
 WORKDIR /app
 COPY --from=build /app .
+EXPOSE 80
 ENTRYPOINT ["dotnet", "Weatherforecast.Api.dll"]
